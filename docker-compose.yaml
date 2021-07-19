@@ -18,7 +18,10 @@ services:
     
     mongo:
         container_name: mongo-database
-        image: mongo
+        image: mongo        
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=danyu
+            - MONGO_INITDB_ROOT_PASSWORD=password
         expose: 
             - "27017"
         volumes: 
