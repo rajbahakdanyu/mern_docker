@@ -39,8 +39,6 @@ exports.addTask = async (req, res, next) => {
 
 exports.updateTask = async (req, res, next) => {
     try {
-        req.body["completed"] = !req.body["completed"]
-
         const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
             new: true,
             runValidators: true,
@@ -51,6 +49,21 @@ exports.updateTask = async (req, res, next) => {
             data: {
                 task,
             },
+        })
+    } catch (e) {
+        console.log(e)
+        res.send(400).json({
+            status: "error",
+        })
+    }
+}
+
+exports.deleteTask = async (req, res, next) => {
+    try {
+        const task = await Task.findByIdAndDelete(req.params.id)
+
+        res.status(200).json({
+            status: "success",
         })
     } catch (e) {
         console.log(e)
