@@ -4,7 +4,10 @@ services:
         container_name: server-container
         build: ./server
         ports:
-            - "5000:5000"
+            - "5000:5000"        
+        environment:
+            - MONGO_USER=danyu
+            - MONGO_PASSWORD=password
         depends_on: 
             - mongo
 
@@ -22,8 +25,8 @@ services:
         environment:
             - MONGO_INITDB_ROOT_USERNAME=danyu
             - MONGO_INITDB_ROOT_PASSWORD=password
-        expose: 
-            - "27017"
+            - MONGO_USER=danyu
+            - MONGO_PASSWORD=password
         volumes: 
             - serverDB:/data/db
 
