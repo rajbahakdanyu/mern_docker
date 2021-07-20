@@ -1,10 +1,13 @@
 import React from "react"
+
 import Task from "./Task"
 
-const Tasks = () => {
+const Tasks = ({ tasks }) => {
     return (
         <>
-            <Task />
+            {tasks.map((task) => (
+                <Task key={task.id} task={task} />
+            ))}
         </>
     )
 }
