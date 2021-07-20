@@ -6,6 +6,16 @@ import Tasks from "./components/Tasks"
 function App() {
     const [tasks, setTasks] = useState([])
 
+    useEffect(() => {
+        const getTasks = async () => {
+            const tasksFromServer = await fetchTasks()
+
+            setTasks(tasksFromServer)
+        }
+
+        getTasks()
+    }, [])
+
     // Fetch tasks
     const fetchTasks = async () => {
         const res = await fetch("http://localhost:5000/api/v1/", {
@@ -19,7 +29,7 @@ function App() {
     return (
         <div className='container'>
             <Header />
-            <Tasks />
+            {tasks.length > 0 ? <Tasks tasks={tasks} /> : "No Tasks"}
         </div>
     )
 }
