@@ -1,9 +1,9 @@
-import TaskForm from "./components/TaskForm"
+import Header from "./components/Header"
 
 function App() {
     return (
-        <div>
-            <TaskForm />
+        <div className='container'>
+            <Header />
         </div>
     )
 }
