@@ -1,11 +1,11 @@
 import React from "react"
 import { FaTimes } from "react-icons/fa"
 
-const Task = () => {
+const Task = ({ task }) => {
     return (
-        <div className={`task reminder`}>
+        <div className={`task ${task.completed ? "reminder" : ""}`}>
             <h3>
-                Task Name
+                {task.text}
                 <FaTimes style={{ color: "red" }} />
             </h3>
         </div>
