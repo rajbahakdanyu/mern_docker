@@ -5,11 +5,7 @@ exports.getTasks = async (req, res, next) => {
         const tasks = await Task.find()
 
         res.status(200).json({
-            status: "success",
-            results: tasks.length,
-            data: {
-                tasks,
-            },
+            tasks,
         })
     } catch (e) {
         console.log(e)

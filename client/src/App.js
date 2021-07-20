@@ -18,13 +18,15 @@ function App() {
 
     // Fetch tasks
     const fetchTasks = async () => {
-        const res = await fetch("http://localhost:5000/api/v1/", {
+        const res = await fetch("http://localhost:5000/api/v1/tasks", {
             method: "GET",
         })
         const data = await res.json()
+        console.log(data)
 
         return data
     }
+    console.log(tasks)
 
     return (
         <div className='container'>

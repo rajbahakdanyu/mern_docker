@@ -1,5 +1,6 @@
 const express = require("express")
 const mongoose = require("mongoose")
+const cors = require("cors")
 
 const {
     MONGO_USER,
@@ -29,6 +30,8 @@ const connectWithRetry = () => {
 
 connectWithRetry()
 
+app.enable("trust proxy")
+app.use(cors({}))
 app.use(express.json())
 
 const port = process.env.PORT || 5000
